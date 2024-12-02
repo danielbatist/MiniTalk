@@ -1,2 +1,0 @@
-# MiniTalk
-MiniTalk - 42
