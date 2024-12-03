@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:11:26 by dbatista          #+#    #+#             */
-/*   Updated: 2024/12/03 09:47:31 by dbatista         ###   ########.fr       */
+/*   Updated: 2024/12/03 18:21:13 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "printf/ft_printf.h"
 
 void	send_bits(int pid, char *str, size_t len)
 {

@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 14:59:04 by dbatista          #+#    #+#             */
-/*   Updated: 2024/12/03 15:00:14 by dbatista         ###   ########.fr       */
+/*   Created: 2024/12/03 14:52:19 by dbatista          #+#    #+#             */
+/*   Updated: 2024/12/03 19:20:28 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include "ft_printf.h"
 
-int	ft_atoi(const char *str)
+int	ft_putstr(char *str)
 {
-	int	i;
-	int	sing;
-	int	res;
+	int		i;
 
+	if (!str)
+		return (ft_putstr("(null)"));
 	i = 0;
-	while (str[i] == 32 || (str[i] > 8 && str[i] < 14))
-		i++;
-	sing = 1;
-	if (str[i] == '-')
-		sing *= -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	res = 0;
-	while(str[i] >= '0' && str[i] <= '9')
+	while (str[i])
 	{
-		res = (res * 10) + (str[i] - 48);
+		ft_putchar(str[i]);
 		i++;
 	}
-	return (sing * res);
+	return (i);
 }

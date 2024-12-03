@@ -3,37 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:40:39 by dbatista          #+#    #+#             */
-/*   Updated: 2024/12/02 23:56:13 by dbatista         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:13:53 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
-
-typedef struct s_msg
-{
-	unsigned char	c;
-	int				bit_index;
-}				t_msg;
-
-t_msg	g_msg;
-
-g_msg = {0, 0};
+#include "printf/ft_printf.h"
 
 void	handle_signal(int sig)
 {
+	unsigned char c;
+	int	bit;
+
+	c = 0;
+	bit = 0;
 	if (sig == SIGUSR2)
-		g_msg.c |= (1 << g_msg.bit_index);
-	g_msg.bit_index++;
+		c |= (1 << bit);
+	bit++;
 	if (sig == 8)
 	{
-		write(1, &g_msg.c, 1);
+		write(1, &c, 1);
 		if (sig == '\0')
 			write(1, "\n", 1);
-		g_msg.c = 0;
-		g_msg.bit_index = 0;
+		c = 0;
+		bit = 0;
 	}
 }
 

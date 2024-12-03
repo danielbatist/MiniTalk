@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 14:54:56 by dbatista          #+#    #+#             */
-/*   Updated: 2024/12/03 14:55:27 by dbatista         ###   ########.fr       */
+/*   Created: 2024/12/03 14:54:20 by dbatista          #+#    #+#             */
+/*   Updated: 2024/12/03 19:20:06 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include "ft_printf.h"
 
-int	ft_putptr(unsigned long nbr, int pre)
+int	ft_putnbr_u(unsigned int nb)
 {
 	int	count;
 
 	count = 0;
-	if (nbr == 0)
-	{
-		return (ft_putstr("(nil)"));
-	}
-	if (pre == 0)
-		count += ft_putstr("0x");
-	if (nbr > 15)
-		count += ft_putptr((nbr / 16), 1);
-	count += ft_putchar("0123456789abcdef"[nbr % 16]);
+	if (nb >= 10)
+		count += ft_putnbr(nb / 10);
+	count += ft_putchar((nb % 10) + '0');
 	return (count);
 }
-

@@ -6,11 +6,11 @@
 /*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:53:49 by dbatista          #+#    #+#             */
-/*   Updated: 2024/12/03 14:54:02 by dbatista         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:20:05 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include "ft_printf.h"
 
 int	ft_putnbr(int nb)
 {
