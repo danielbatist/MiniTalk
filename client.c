@@ -3,41 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:11:26 by dbatista          #+#    #+#             */
-/*   Updated: 2024/12/02 18:36:23 by dbatista         ###   ########.fr       */
+/*   Updated: 2024/12/03 09:47:31 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <signal.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "minitalk.h"
+
+void	send_bits(int pid, char *str, size_t len)
+{
+	size_t	i;
+	int		s;
+
+	i = 0;
+	while (i <= len)
+	{
+		s = 0;
+		while (s < 7)
+		{
+			if ((str[i] >> s) & 1)
+				kill(pid, SIGUSR2);
+			else
+				kill(pid, SIGUSR1);
+			s++;
+		}
+		usleep(300);
+		i++;
+	}
+}
 
 int	main(int argc, char **argv)
 {
-	int	pid;
+	char	*str;
+	int		pid;
 
-	if (argc != 2)
+	if (argc == 3)
 	{
-		printf("Unable to continue!\n");
-		printf("Example: %s 12345 \n", argv[0]);
-		return (1);
+		pid = ft_atoi(argv[1]); // Tratar pid que tenha numeros junto com qualquer outra caracter.
+		if (pid <= 0)
+		{
+			ft_printf("Error, Invalid PID.\n");
+			ft_printf("Please, Try again.\n");
+			return (1);
+		}
+		str = argv[2];
+		send_bits(pid, str, ft_strlen(str));
 	}
-	pid = atoi(argv[1]); // Tratar pid que tenha numeros junto com qualquer outra caracter.
-	if (pid <= 0)
+	else
 	{
-		printf("Error, Invalid PID.\n");
-		printf("Please, Try again.\n");
-		return (1);
+		ft_printf("Error!\n Usable: %s <PID> <argument>\n", argv[0]);
 	}
-	printf("Enviando SIGUSR1 para o PID %d\n", pid);
-	kill(pid, SIGUSR1);
-	usleep(300000);
-
-	printf("Enviando SIGUSR2 para o PID %d\n", pid);
-	kill(pid, SIGUSR2);
-	usleep(300000);
 	return (0);
 }
