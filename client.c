@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:11:26 by dbatista          #+#    #+#             */
-/*   Updated: 2024/12/04 10:52:24 by dbatista         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:56:05 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,16 @@ void	send_bits(int pid, char *str, size_t len)
 			else
 				kill(pid, SIGUSR1);
 			s++;
+			usleep(500);
 		}
-		usleep(1000);
+		usleep(500);
 		i++;
 	}
 	s = 0;
 	while (s < 8)
 	{
 		kill(pid, SIGUSR1);
-		usleep(1000);
+		usleep(500);
 		s++;
 	}
 }
