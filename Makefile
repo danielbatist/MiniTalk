@@ -14,7 +14,7 @@ all:
 	@$(CC) $(CFLAGS) client.c -L$(PRINTF) -lftprintf -o $(CLIENT)
 	@echo "All ready!"
 clean: 
-	make clean -s -C $(PRINTF)
+	@make clean -s -C $(PRINTF)
 
 fclean: clean
 	@make fclean -s -C $(PRINTF)

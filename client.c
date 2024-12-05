@@ -6,7 +6,7 @@
 /*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:11:26 by dbatista          #+#    #+#             */
-/*   Updated: 2024/12/04 18:56:05 by dbatista         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:20:01 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	send_bits(int pid, char *str, size_t len)
 	int		s;
 
 	i = 0;
-	while (i < len)
+	while (i <= len)
 	{
 		s = 0;
 		while (s < 8)
@@ -28,40 +28,39 @@ void	send_bits(int pid, char *str, size_t len)
 			else
 				kill(pid, SIGUSR1);
 			s++;
-			usleep(500);
+			usleep(1000);
 		}
 		usleep(500);
 		i++;
 	}
-	s = 0;
-	while (s < 8)
-	{
-		kill(pid, SIGUSR1);
-		usleep(500);
-		s++;
-	}
+}
+
+void	handle_ack(int sig)
+{
+	if (sig == SIGUSR1)
+		write(1, "The message was received successfully.\n", 37);
 }
 
 int	main(int argc, char **argv)
 {
-	char	*str;
+	struct sigaction	sa;
 	int		pid;
 
 	if (argc == 3)
 	{
-		pid = ft_atoi(argv[1]); // Tratar pid que tenha numeros junto com qualquer outra caracter.
+		sa.sa_handler = handle_ack;
+		sa.sa_flags = 0;
+		sigemptyset(&sa.sa_mask);
+		sigaction(SIGUSR1, &sa, NULL);
+		pid = ft_atoi(argv[1]);
 		if (pid <= 0)
 		{
-			ft_printf("Error, Invalid PID.\n");
-			ft_printf("Please, Try again.\n");
+			ft_printf("Error, Invalid PID.\nPlease, Try again.\n");
 			return (1);
 		}
-		str = argv[2];
-		send_bits(pid, str, ft_strlen(str));
+		send_bits(pid, argv[2], ft_strlen(argv[2]));
 	}
 	else
-	{
 		ft_printf("Error!\nUsable: %s <PID> <argument>\n", argv[0]);
-	}
 	return (0);
 }
