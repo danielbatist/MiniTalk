@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:11:26 by dbatista          #+#    #+#             */
-/*   Updated: 2024/12/05 19:20:01 by dbatista         ###   ########.fr       */
+/*   Updated: 2024/12/06 00:21:21 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf/ft_printf.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+void	print_art(const char *file_path)
+{
+	FILE	*file;
+	char	line[256];
+
+	file = fopen(file_path, "r");
+	if (!file)
+		return ;
+	while (fgets(line, sizeof(line), file))
+		printf("%s", line);
+	fclose(file);
+}
 
 void	send_bits(int pid, char *str, size_t len)
 {
@@ -38,14 +53,18 @@ void	send_bits(int pid, char *str, size_t len)
 void	handle_ack(int sig)
 {
 	if (sig == SIGUSR1)
-		write(1, "The message was received successfully.\n", 37);
+	{
+		write(1, "The message was received successfully.", 37);
+		write(1, "\n", 1);
+	}
 }
 
 int	main(int argc, char **argv)
 {
+	int					pid;
 	struct sigaction	sa;
-	int		pid;
 
+	print_art("client_art.txt");
 	if (argc == 3)
 	{
 		sa.sa_handler = handle_ack;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:40:39 by dbatista          #+#    #+#             */
-/*   Updated: 2024/12/05 19:33:04 by dbatista         ###   ########.fr       */
+/*   Updated: 2024/12/05 23:53:18 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,10 @@ void	treat_signal(int sig, siginfo_t *info, void *context)
 	}
 }
 
-#include <stdio.h>
 int	main(void)
 {
 	struct sigaction	sa;
 
- 		 printf("     _______. _______ .______     ____    ____  _______ .______\n");
- 	    printf("    /       ||   ____||   _  \\    \\   \\  /   / |   ____||   _  \\\n");
- 	   printf("   |   (----`|  |__   |  |_)  |    \\   \\/   /  |  |__   |  |_)  |\n");
- 	    printf("    \\   \\    |   __|  |      /      \\      /   |   __|  |      /\n");
- 	printf(".----)   |   |  |____ |  |\\  \\----.  \\    /    |  |____ |  |\\  \\----.\n");
- 	printf("|_______/    |_______|| _| `._____|   \\__/     |_______|| _| `._____|\n");
- 	printf("\nServer is running... 🚀\n");
-	ft_printf("Welcome to dbatista server!!!\n");
 	ft_printf("PID: %d\n", getpid());
 	sa.sa_sigaction = treat_signal;
 	sa.sa_flags = SA_SIGINFO;

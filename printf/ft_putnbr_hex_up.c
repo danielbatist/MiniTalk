@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_hex_up.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:57:13 by dbatista          #+#    #+#             */
-/*   Updated: 2024/12/03 14:58:58 by dbatista         ###   ########.fr       */
+/*   Updated: 2024/12/05 23:03:46 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_printf.h"
 

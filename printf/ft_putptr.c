@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:54:56 by dbatista          #+#    #+#             */
-/*   Updated: 2024/12/03 19:20:20 by dbatista         ###   ########.fr       */
+/*   Updated: 2024/12/05 23:02:52 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,3 @@ int	ft_putptr(unsigned long nbr, int pre)
 	count += ft_putchar("0123456789abcdef"[nbr % 16]);
 	return (count);
 }
-
