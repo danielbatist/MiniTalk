@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbatista <dbatista@student.42.rio>         +#+  +:+       +#+        */
+/*   By: dbatista <dbatista@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:11:26 by dbatista          #+#    #+#             */
-/*   Updated: 2024/12/06 00:21:21 by dbatista         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:18:46 by dbatista         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf/ft_printf.h"
-#include <stdio.h>
-#include <stdlib.h>
-
-void	print_art(const char *file_path)
-{
-	FILE	*file;
-	char	line[256];
-
-	file = fopen(file_path, "r");
-	if (!file)
-		return ;
-	while (fgets(line, sizeof(line), file))
-		printf("%s", line);
-	fclose(file);
-}
 
 void	send_bits(int pid, char *str, size_t len)
 {
@@ -64,7 +49,6 @@ int	main(int argc, char **argv)
 	int					pid;
 	struct sigaction	sa;
 
-	print_art("client_art.txt");
 	if (argc == 3)
 	{
 		sa.sa_handler = handle_ack;

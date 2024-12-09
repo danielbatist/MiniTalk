@@ -35,8 +35,37 @@ clean:
 fclean: clean
 	@make fclean -s -C $(PRINTF)
 	@rm $(SERVER) $(CLIENT)
-	@echo "Finish!"
 
+	                
+	@echo "$(YELLOW)     #########################################  $(RESET)"              
+	@echo "$(YELLOW)    #####.................................##### $(RESET)"              
+	@echo "$(YELLOW)   +#######.                           .#######+$(RESET)"               
+	@echo "$(YELLOW)   +##-.+####-.                     ..#####..##+$(RESET)"               
+	@echo "$(YELLOW)   +##-  .+####+.                 .+####+.  .##+$(RESET)"               
+	@echo "$(YELLOW)   +##-    .+####+.             .-####+..   .##+$(RESET)"               
+	@echo "$(YELLOW)   +##-      .+####+.        ..+####+.      .##+$(RESET)"               
+	@echo "$(YELLOW)   +##-        .-####+..   ..+####-.        .##+$(RESET)"               
+	@echo "$(YELLOW)   +##-         .+######...######+..        .##+$(RESET)"               
+	@echo "$(YELLOW)   +##-      ..####++#########++####.       .##+$(RESET)"               
+	@echo "$(YELLOW)   +##-    ..####-.  .-#####-.  .-####..    .##+$(RESET)"               
+	@echo "$(YELLOW)   +##-  ..####-.                 ..####..  .##+$(RESET)"               
+	@echo "$(YELLOW)   +##-..####.                       .####...##+$(RESET)"               
+	@echo "$(YELLOW)   +##+####.                           .####+##+$(RESET)"               
+	@echo "$(YELLOW)    #####.................................##### $(RESET)"              
+	@echo "$(YELLOW)     #########################################  $(RESET)"              
+             
+
+	@echo "$(YELLOW) _______  __  .__   __.  __       _______. __    __  $(RESET)" 
+	@echo "$(YELLOW)|   ____||  | |  \ |  | |  |     /       ||  |  |  | $(RESET)" 
+	@echo "$(YELLOW)|  |__   |  | |   \|  | |  |    |   -----'|  |__|  |  $(RESET)" 
+	@echo "$(YELLOW)|   __|  |  | |  . '  | |  |     \   \    |   __   | $(RESET)" 
+	@echo "$(YELLOW)|  |     |  | |  |\   | |  | .----'   |   |  |  |  |  $(RESET)" 
+	@echo "$(YELLOW)|__|     |__| |__| \__| |__| |_______/    |__|  |__| $(RESET)" 
+                                                     
+
+
+
+                                                                    
 re: fclean all
 
 .PHONY:	all clean fclean
